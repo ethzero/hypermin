@@ -2,10 +2,37 @@
 
 add_action( "customize_register", "hypermin_theme_customize_register" );
 function hypermin_theme_customize_register( $wp_customize ) {
+	$wp_customize->add_setting('hypermin_theme_options[prompt_char_site_title]', array(
+		'default'        => '@',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		'sanitize_callback' => 'sanitize_prompt_char',
+	));
+	$wp_customize->add_control('hypermin_prompt_char_site_title', array(
+		'label'      => __('Prompt Character (Single)', 'hypermin'),
+		'section'    => 'title_tagline',
+		'settings'   => 'hypermin_theme_options[prompt_char_site_title]',
+	));
+
+	$wp_customize->add_setting('hypermin_theme_options[prompt_char_site_title_gap]', array(
+		'capability' => 'edit_theme_options',
+		'type'       => 'option',
+	));
+	$wp_customize->add_control('hypermin_header_text', array(
+		'settings' => 'hypermin_theme_options[prompt_char_site_title_gap]',
+		'label'    => __('Add space after prompt'),
+		'section'  => 'title_tagline',
+		'type'     => 'checkbox',
+	));
+
 	$wp_customize->remove_control("header_image");
 	$wp_customize->remove_section("colors");
 	$wp_customize->remove_section("background_image");
 }
+function sanitize_prompt_char( $value ) {
+	return $value[0];  // We only want the first character.
+}
+
 
 add_action( 'after_setup_theme', 'remove_twentyfifteen_customizer', 999 );
 function remove_twentyfifteen_customizer() {

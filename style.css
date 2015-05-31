@@ -78,14 +78,17 @@ blockquote {
 	font-weight: normal;
 	text-transform: uppercase;
 }
-.site-title:before {
+.site-title .prompt-character {
 	color: rgb(190,190,190);
-	margin-left: 0.2em;
-	margin-right: 0.2em;
-	content: "$";
-	content: "=";
+	margin-left: 0.5em;
+	margin-right: 0em;
 	content: "^";
 	content: "@";
+	content: "$";
+	content: "=";
+}
+.site-title .prompt-character.gap {
+	margin-right: 0.25em;
 }
 .site-title:after {
 }
@@ -193,6 +196,29 @@ blockquote {
 	color: rgb(153,153,153);
 }
 
+.page-header {
+	background-color: rgb(64,64,64);
+}
+.page-title {
+	font-family: inherit;
+	color: rgb(252,252,252);
+}
+.page-title:before {
+	color: rgb(190,190,190);
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+	content: "@";
+}
+
+.page-content {
+	background-color: rgb(64,64,64);
+	padding: 3%;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea {
+	width: 80%;
+}
+
 .comments-area {
 	background-color: inherit;
 	border: 2px solid rgb(252,252,252);
@@ -212,7 +238,20 @@ blockquote {
 	font-family: inherit;
 	color: rgb(153,153,153);
 }
-
+.comment-list .reply a {
+	border: 1px solid rgb(153, 153, 153);
+	background-color: rgb(64,64,64);
+	color: rgb(153,153,153);
+	font-weight: normal;
+}
+.comment-list .reply a:hover {
+	border: 1px solid rgb(250,196,0);
+	background-color: rgb(64,64,64);
+	color: rgb(250,196,0);
+}
+.bypostauthor > article .fn {
+	color: rgb(153,153,135);
+}
 
 .post-navigation {
 	background-color: inherit;
@@ -272,6 +311,9 @@ background-color: rgb(64, 64, 64);
 	.widget input[type="search"] {
 		width: 80%;
 	}
+	.page-header {
+		border-left-color: rgb(250, 196, 0);		
+	}
 }
 
 @media screen and (min-width: 46.25em) {
@@ -287,7 +329,7 @@ background-color: rgb(64, 64, 64);
 	body {
 	}
 	body:before {
-		background-color: inherit;
+		background-color: rgb(250, 195, 0);
 	}
 	blockquote {
 		line-height: 1.3667;
@@ -357,6 +399,9 @@ background-color: rgb(64, 64, 64);
 	}
 	.site-info {
 		padding: 3% 3%;		
+	}
+	.page-header {
+		padding: 1.1666% 3.3333%;
 	}
 }
 
