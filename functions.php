@@ -1,9 +1,23 @@
 <?php
+
+add_action( "customize_register", "hypermin_theme_customize_register" );
+function hypermin_theme_customize_register( $wp_customize ) {
+	$wp_customize->remove_control("header_image");
+	$wp_customize->remove_section("colors");
+	$wp_customize->remove_section("background_image");
+}
+
+add_action( 'after_setup_theme', 'remove_twentyfifteen_customizer', 999 );
+function remove_twentyfifteen_customizer() {
+    remove_action( 'customize_register', 'twentyfifteen_customize_register' );
+}
+
 /**
  * Change text strings
  *
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/gettext
  */
+add_filter( 'gettext', 'hypermin_text_strings', 20, 3 );
 function hypermin_text_strings( $translated_text, $text, $domain ) {
 	switch ( $translated_text ) {
 		case 'Post Comment' :
@@ -12,10 +26,8 @@ function hypermin_text_strings( $translated_text, $text, $domain ) {
 	}
 	return $translated_text;
 }
-add_filter( 'gettext', 'hypermin_text_strings', 20, 3 );
 
-
-
+add_filter( 'get_search_form', 'hypermin_search_form_modify' );
 function hypermin_search_form_modify( $html ) {
 	$html = str_replace(
 		'<input type="search" class="search-field" placeholder="Search &hellip;" value="',
@@ -28,9 +40,8 @@ function hypermin_search_form_modify( $html ) {
 		$html
 	);
 }
-add_filter( 'get_search_form', 'hypermin_search_form_modify' );
 
-
+add_action( 'widgets_init', 'replace_sidebar_headers', 77);
 function replace_sidebar_headers() {
   unregister_sidebar('sidebar-1');
   /** I have looked for the ID of the sidebar by looking at        
@@ -47,9 +58,8 @@ function replace_sidebar_headers() {
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'replace_sidebar_headers', 77);
 
-
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'child-style',
@@ -58,7 +68,6 @@ function theme_enqueue_styles() {
 	);
 	wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Inconsolata|VT323' );
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 
 function twentyfifteen_entry_meta() {
