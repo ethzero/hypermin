@@ -18,12 +18,37 @@ function hypermin_theme_customize_register( $wp_customize ) {
 		'capability' => 'edit_theme_options',
 		'type'       => 'option',
 	));
-	$wp_customize->add_control('hypermin_header_text', array(
+	$wp_customize->add_control('hypermin_prompt_char_site_title_gap', array(
 		'settings' => 'hypermin_theme_options[prompt_char_site_title_gap]',
 		'label'    => __('Add space after prompt'),
 		'section'  => 'title_tagline',
 		'type'     => 'checkbox',
 	));
+
+
+	$wp_customize->add_setting('hypermin_theme_options[tag_separator_string]', array(
+		'default'        => '//',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+		// 'sanitize_callback' => 'sanitize_prompt_char',
+	));
+	$wp_customize->add_control('hypermin_tag_separator_string', array(
+		'label'      => __('Tag separator', 'hypermin'),
+		'section'    => 'nav',
+		'settings'   => 'hypermin_theme_options[tag_separator_string]',
+	));
+
+	$wp_customize->add_setting('hypermin_theme_options[tag_separator_gap]', array(
+		'capability' => 'edit_theme_options',
+		'type'       => 'option',
+	));
+	$wp_customize->add_control('hypermin_tag_separator_gap', array(
+		'settings' => 'hypermin_theme_options[tag_separator_gap]',
+		'label'    => __('Add space around tag separator'),
+		'section'  => 'nav',
+		'type'     => 'checkbox',
+	));
+
 
 	$wp_customize->remove_control("header_image");
 	$wp_customize->remove_section("colors");
@@ -148,8 +173,9 @@ function twentyfifteen_entry_meta() {
 				$categories_list
 			);
 		}
-
-		$tags_list = get_the_tag_list( '', _x( ' <span class="tag-separator">//</span> ', 'Used between list items, there is a space after the comma.', 'twentyfifteen' ) );
+		$hyper_theme_settings = get_option( 'hypermin_theme_options' );
+		$tag_separator_gap = (sanitize_text_field( $hyper_theme_settings['tag_separator_gap'] )) ? "gap" : NULL;
+		$tags_list = get_the_tag_list( '', _x( '<span class="tag-separator '. $tag_separator_gap .'">'. sanitize_text_field( $hyper_theme_settings['tag_separator_string'] ) .'</span>', 'Used between list items, there is a space after the comma.', 'twentyfifteen' ) );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
 				_x( 'Tags', 'Used before tag names.', 'twentyfifteen' ),

@@ -171,7 +171,7 @@ blockquote {
 	font-size: 1.5rem;
 }
 
-.entry-title::before {
+.entry-title:before {
 	color: rgb(250,196,0);
 	padding-right: 0.15em;
 	content: "// ";
@@ -185,17 +185,24 @@ blockquote {
 
 .entry-footer {
 	background-color: rgb(250,196,0);
-	color: rgb(255, 255, 255);
+	color: rgb(64,64,64);
 	padding: 1.8461% 2.6923%;
 	font-family: 'Inconsolata';
 }
 .entry-footer a {
-	color: rgb(153,153,153);
+	color: rgb(64,64,64);
 }
-.entry-footer .tag-separator {
+.entry-footer a:hover {
 	color: rgb(153,153,153);
+	border-bottom: 1px solid rgb(153,153,153);
 }
 
+.entry-footer .tag-separator {
+	color: rgb(64,64,64);
+}
+.entry-footer .tag-separator.gap {
+	margin: 0 0.25em;
+}
 .page-header {
 	background-color: rgb(64,64,64);
 }
