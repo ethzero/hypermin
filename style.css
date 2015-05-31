@@ -16,6 +16,7 @@
  Text:				rgb(211, 211, 211);
  Yellow:			rgb(250,196,0);
  White:				rgb(252,252,252);
+ Red:					rgb(190, 0, 0);
 */
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -26,6 +27,10 @@ body {
 	background-color: rgb(0,0,0);
 	color: rgb(211, 211, 211);
 	line-height: 1.2;
+}
+
+#page {
+	background-color: rgb(0,0,0);
 }
 
 blockquote {
@@ -99,6 +104,17 @@ blockquote {
 #site-navigation {
 }
 
+.social-navigation a:before {
+	background-color: rgb(190, 0, 0);
+	color: rgb(252, 252, 252);
+	padding: 0.1em;
+	border-radius: 5px;
+}
+.social-navigation a:hover:before {
+	background-color: rgb(64,64,64);
+	color: rgb(153,153,153);
+}
+
 .widget_archive a:before, .widget_categories a:before, .widget_links a:before, .widget_meta a:before, .widget_nav_menu a:before, .widget_pages a:before, .widget_recent_comments a:before, .widget_recent_entries a:before, .item-prompt-a, .item-prompt-b {
 }
 .item-prompt-a {
@@ -135,7 +151,7 @@ blockquote {
 
 .entry-header {
 	color: rgb(252,252,252);
-  padding: 1.6923% 3.6923% 0.6923% 3.6923%;
+  padding: 3.6923% 3.6923% 0.6923% 3.6923%;
 	text-transform: uppercase;
 }
 .entry-header h1 {
@@ -182,6 +198,9 @@ blockquote {
 	border: 2px solid rgb(252,252,252);
 	padding: 0.6923% 1.6923% 2.6923% 1.6923%;
 }
+.comments-area a {
+	color: rgb(250, 196, 0);
+}
 .comments-title, .comment-reply-title {
 	font-family: 'Inconsolata';
 }
@@ -217,8 +236,11 @@ blockquote {
 
 .site-footer {
 	background-color: inherit;
+background-color: rgb(64, 64, 64);
 }
-
+.site-info a {
+	color: rgb(250, 196, 0);
+}
 
 @media screen and (max-width: 38.75em) {
 	.hentry {
@@ -230,14 +252,6 @@ blockquote {
 	.widget input[type="search"] {
 		width: 70%;
 	}
-/*
-	.widget_archive li:first-child, .widget_categories li:first-child, .widget_links li:first-child, .widget_meta li:first-child, .widget_nav_menu li:first-child, .widget_pages li:first-child, .widget_recent_comments li:first-child, .widget_recent_entries li:first-child {
-		padding-top: 0.7667em;
-	}
-	.widget_archive li:last-child, .widget_categories li:last-child, .widget_links li:last-child, .widget_meta li:last-child, .widget_nav_menu li:last-child, .widget_pages li:last-child, .widget_recent_comments li:last-child, .widget_recent_entries li:last-child {
-		padding-bottom: 0.7667em;
-	}
-*/
 	.comments-area {
 		margin: 2.6923% 2.6923% 5.6923%;
 	}
@@ -262,7 +276,6 @@ blockquote {
 
 @media screen and (min-width: 46.25em) {
 	.widget {
-	  /*line-height: 1.75em;*/
 	}
 	.widget p, .widget address, .widget hr, .widget ul, .widget ol, .widget dl, .widget dd, .widget table, .widget pre {}
 	.widget ul {
@@ -275,7 +288,6 @@ blockquote {
 	}
 	body:before {
 		background-color: inherit;
-		box-shadow: 0px 0px 1px 0px rgb(255, 255, 255);
 	}
 	blockquote {
 		line-height: 1.3667;
@@ -298,6 +310,19 @@ blockquote {
 	.main-navigation a {
 		padding: 0.2em 0;	
 	}
+	.social-navigation {
+		margin: 0 15% 10%;
+	}
+	.social-navigation li {
+		width: 20%;
+	}
+	.social-navigation a {
+		color: rgb(0,0,0);
+	}
+	.social-navigation a:hover {
+		color: rgb(64,64,64);
+	}
+
 	.widget {
 		margin: 0 0 9%;
 		padding: 0 10%;
@@ -312,6 +337,7 @@ blockquote {
 	}
 	.widget input[type="search"] {
 		width: 65%;
+		background-color: inherit;
 	}
 	.widget-dialog {
 	}
@@ -329,7 +355,9 @@ blockquote {
 	.hentry + .hentry, .page-header + .hentry, .page-header + .page-content {
 		margin-top: 6.3333%;
 	}
-
+	.site-info {
+		padding: 3% 3%;		
+	}
 }
 
 .widget_archive li, .widget_categories li, .widget_links li, .widget_meta li, .widget_nav_menu li, .widget_pages li, .widget_recent_comments li, .widget_recent_entries li {
@@ -343,7 +371,6 @@ blockquote {
 }
 .widget_archive a, .widget_categories a, .widget_links a, .widget_meta a, .widget_nav_menu a, .widget_pages a, .widget_recent_comments a, .widget_recent_entries a {
 	display: block;
-	/*margin-left: 3%;*/
 	padding: 0.7667em 3%;
 }
 
@@ -355,6 +382,11 @@ button, input, select, textarea {
 }
 button, input[type="button"], input[type="reset"], input[type="submit"] {
 	font-family: inherit;
+	background-color: rgb(64,64,64);
+}
+button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus {
+	background-color: rgb(153,153,153);
+	color: rgb(64,64,64);
 }
 
 .widget .search-form {
@@ -379,9 +411,13 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 	border: 2px solid rgb(153,153,153);
 	border: 2px solid rgb(64,64,64);
 }
-
+input, textarea {
+	background-color: rgba(64,64,64,0.5);
+	color: rgb(153,153,153);
+}
 input:focus, textarea:focus {
-	background-color: rgb(0,0,0);
+	background-color: rgb(64,64,64);
+	color: rgb(252,252,252);
 }
 
 ::-webkit-input-placeholder {	font-size: 0.85em; color: rgb(102,102,102);	}
